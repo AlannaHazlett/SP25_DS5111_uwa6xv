@@ -12,6 +12,7 @@
 	* Name your SSH Key, so you remember what system it is used to connect to and paste the output from `cat id_ed25519.pub` into the Key section. 
 	* Check GitHub connection with `ssh -T git@github.com` in the command line. If all went well you will see your GitHub username.  
 * Set up your GitHub global configurations utilizing `setup_git_global_configs.sh` in the `scripts/` directory, making sure to enter in your GitHub email and username in the script. 
+### Set Up Project
 * Clone my [repo](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv) so from this point forward the instructions should be runnable directly from my scripts.
 * Use the script to install chrome headless browser.  Use example.com for a quick test.
 * You can quickly install package dependencies utilizing the  `requirements.txt` file. 
@@ -21,6 +22,7 @@
 	* If you have not entered your virtual environment you can quickly do this with `make update`.
 	* Then you call to create the csv, which depends upon the html call,  `make ygainers.csv`. You can see an example of this csv in my [sample_data](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/tree/main/sample_data) directory. 
 * The current structure of the repository is:
+```
 ├── LICENSE
 ├── README.md
 ├── google-chrome-stable_current_amd64.deb
@@ -34,4 +36,4 @@
 │   ├── makefile
 │   └── setup_github_global_creds.sh
 └── ygainers.html
-
+```
