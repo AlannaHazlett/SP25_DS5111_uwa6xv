@@ -10,15 +10,28 @@
 	* Display the SSH key `cat id_ed25519.pub` and copy the output, including the email address. 
 	* In GitHub Settings -> SSH and GPG Keys click on new SSH key button.
 	* Name your SSH Key, so you remember what system it is used to connect to and paste the output from `cat id_ed25519.pub` into the Key section. 
-	* Check GitHub connection with `ssh -T git@github.com` in the command line. If all went well you will see your GitHub username.     
+	* Check GitHub connection with `ssh -T git@github.com` in the command line. If all went well you will see your GitHub username.  
 * Set up your GitHub global configurations utilizing `setup_git_global_configs.sh` in the `scripts/` directory, making sure to enter in your GitHub email and username in the script. 
 * Clone my [repo](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv) so from this point forward the instructions should be runnable directly from my scripts.
 * Use the script to install chrome headless browser.  Use example.com for a quick test.
-* You can quickly install package dependencies utilizing the  `requirements.txt` file.  
+* You can quickly install package dependencies utilizing the  `requirements.txt` file. 
 	* In the command line `pip install -r requirements.txt` 
 * To create and update the virtual environment use `make update` from the makefile. 
 * Utilize makefile to activate google headless browser to create a csv.
 	* If you have not entered your virtual environment you can quickly do this with `make update`.
-	* Then you call to create the csv, which depends upon the html call,  `make ygainers.csv`. You can see an example of this csv in my sample_data/ directory. 
-* Finally run `tree <your project-repo> -I env` and copy the output to show the reader what your structure looks like.
+	* Then you call to create the csv, which depends upon the html call,  `make ygainers.csv`. You can see an example of this csv in my [sample_data](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/tree/main/sample_data) directory. 
+* The current structure of the repository is:
+├── LICENSE
+├── README.md
+├── google-chrome-stable_current_amd64.deb
+├── requirements.txt
+├── sample_data
+│   └── ygainers.csv
+├── scripts
+│   ├── google-chrome-stable_current_amd64.deb
+│   ├── init.sh
+│   ├── install_chrome_headless.sh
+│   ├── makefile
+│   └── setup_github_global_creds.sh
+└── ygainers.html
 
