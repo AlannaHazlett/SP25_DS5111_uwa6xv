@@ -19,5 +19,15 @@ wsjgainers.html:
 wsjgainers.csv: wsjgainers.html
 	python -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
 
-clean:
-	rm ygainers.html ygainers.csv
+lint: 
+	pylint bin/          #$(file)
+	pylint tests/ || true	
+
+test: lint
+	pytest tests/*.py
+
+clean ygainers:
+	rm ygainers.html ygainers.csv 
+
+clean wsjgainers: 
+	rm wsjgainers.html wsjgainers.csv

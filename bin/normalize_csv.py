@@ -1,10 +1,20 @@
-import pandas as pd
+"""
+Module creates normalized versions of stock data csvs so they can later be merged.
+"""
 import sys
-assert len(sys.argv)==2
+import pandas as pd
+#assert len(sys.argv)==2
 print(sys.argv)
 fname = sys.argv[1].strip()
 
+
 def csv_normalizer(csv):
+    """
+    INPUT: csv
+    OUTPUT: csv
+    DESCRIPTION: Function receives ygainers.csv or wsjgainers.csv and cleans the data 
+    they are in the same format. 
+    """
     if csv == 'sample_data/ygainers.csv':
         ygainers = pd.read_csv('sample_data/ygainers.csv')
         assert ygainers.shape[1] == 13
@@ -16,7 +26,10 @@ def csv_normalizer(csv):
                                     'Change %':'price_percent_change'}, axis=1)
         ygainers['price'] = ygainers.price.str.split(' ', expand=True)[0]
         ygainers['price_percent_change'] = ygainers.price_percent_change.str[1:-1]
-        ygainers = ygainers.astype({'symbol': 'str', 'price': 'float', 'price_change': 'float', 'price_percent_change': 'float'})
+        ygainers = ygainers.astype({'symbol': 'str',
+                                    'price': 'float',
+                                    'price_change': 'float',
+                                    'price_percent_change': 'float'})
         assert ygainers.shape[1] == 4
         ygainers.to_csv('ygainers_norm.csv', index = False)
     elif csv == 'sample_data/wsjgainers.csv':
@@ -29,7 +42,10 @@ def csv_normalizer(csv):
                                         'Chg':'price_change',
                                         '% Chg':'price_percent_change'}, axis=1)
         wsjgainers['symbol'] = wsjgainers.symbol.str.extract(r'\((\w+)\)')
-        wsjgainers = wsjgainers.astype({'symbol': 'str', 'price': 'float', 'price_change': 'float', 'price_percent_change': 'float'})
+        wsjgainers = wsjgainers.astype({'symbol': 'str',
+                                        'price': 'float',
+                                        'price_change': 'float',
+                                        'price_percent_change': 'float'})
         assert wsjgainers.shape[1] == 4
         wsjgainers.to_csv('wsjgainers_norm.csv', index = False)
     else:
