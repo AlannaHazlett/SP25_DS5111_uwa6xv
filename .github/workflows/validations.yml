@@ -23,4 +23,4 @@ jobs:
           make update
       - name: Test with pytest
         run: |
-          make test
+          make test 
