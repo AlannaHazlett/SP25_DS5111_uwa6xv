@@ -37,3 +37,5 @@
 │   └── setup_github_global_creds.sh
 └── ygainers.html
 ```
+### Badges
+[![Feature Validation](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml/badge.svg?branch=LAB-03_csv_normalizer&event=push)](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml)
