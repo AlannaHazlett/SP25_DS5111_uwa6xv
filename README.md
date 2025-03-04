@@ -21,19 +21,43 @@
 * Utilize makefile to activate google headless browser to create a csv.
 	* If you have not entered your virtual environment you can quickly do this with `make update`.
 	* Then you call to create the csv, which depends upon the html call,  `make ygainers.csv`. You can see an example of this csv in my [sample_data](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/tree/main/sample_data) directory. 
+* Lint all files in bin/ and tests/ with `make lint`.
+* Test all files in tests/ with `make test`. This will also call `make lint` as a requirement. 
+* Remove HTML or unnormalized CSV files with either `make clean ygainers` or `make clean wsjgainers`. 
 * The current structure of the repository is:
+
 ```
 ├── LICENSE
 ├── README.md
+├── bin
+│   ├── __pycache__
+│   │   └── normalize_csv.cpython-312.pyc
+│   └── normalize_csv.py
 ├── google-chrome-stable_current_amd64.deb
+├── makefile
+├── pylintrc
 ├── requirements.txt
 ├── sample_data
+│   ├── wsjgainers.csv
 │   └── ygainers.csv
 ├── scripts
 │   ├── google-chrome-stable_current_amd64.deb
 │   ├── init.sh
 │   ├── install_chrome_headless.sh
-│   ├── makefile
 │   └── setup_github_global_creds.sh
-└── ygainers.html
+├── tests
+│   ├── __pycache__
+│   │   ├── test_controls.cpython-312-pytest-8.3.4.pyc
+│   │   ├── test_wsjgainers_normalize_csv.cpython-312-pytest-8.3.4.pyc
+│   │   └── test_ygainers_normalize_csv.cpython-312-pytest-8.3.4.pyc
+│   ├── test_controls.py
+│   ├── test_wsjgainers_normalize_csv.py
+│   └── test_ygainers_normalize_csv.py
+├── wsjgainers.html
+├── wsjgainers_norm.csv
+├── ygainers.html
+└── ygainers_norm.csv)
 ```
+
+### Badges
+[![Feature Validation](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml/badge.svg?branch=LAB-03_csv_normalizer&event=push)](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml)
