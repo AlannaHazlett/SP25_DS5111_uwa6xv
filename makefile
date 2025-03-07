@@ -26,8 +26,13 @@ lint:
 test: lint
 	pytest tests/*.py
 
-clean ygainers:
-	rm ygainers.html ygainers.csv 
+gainers:
+	python base_gainer.py SRC=<which>
 
-clean wsjgainers: 
-	rm wsjgainers.html wsjgainers.csv
+clean_ygainers:
+	rm ygainers.html || true 
+	rm ygainers.csv || true 
+
+clean_wsjgainers: 
+	rm wsjgainers.html || true 
+	rm wsjgainers.csv || true
