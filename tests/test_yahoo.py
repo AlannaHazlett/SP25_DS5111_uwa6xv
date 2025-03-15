@@ -1,14 +1,22 @@
+"""
+Test module for corresponding yahoo.py
+"""
 import sys
+import os
 import pandas as pd
-from factory import *
-sys.path.append('.')
-#import bin.normalize_csv
+from factory import GainerFactory
+sys.path.append('home/ubuntu/SP25DS5111_uwa6xv/bin/gainers/')
+#sys.path.append('.')
+#import bin.gainers.factory
 
 
 def test_download():
+    """
+    Test function to see if HTML and raw CSV were created.
+    """
     #downloads HTML
-    GF = GainerFactory('yahoo')
-    GF.get_downloader()
+    gf = GainerFactory('yahoo')
+    gf.get_downloader()
     assert os.path.exists('ygainers.html')#home/ubuntu/SP25_DS5111_uwa6xv/wsjgainers.html')
     #HTML converted to raw csv
     assert os.path.exists('ygainers.csv')#'home/ubuntu/SP25_DS5111_uwz6xv/wsjgainers.csv')
@@ -33,6 +41,10 @@ def test_normalize_csv():
     assert df['symbol'].str.isupper().all()
 
 def test_save_with_timestamp():
+    """
+    Test funciton to test if filename of raw csv 
+    saved with timestamp.
+    """
     #places csv in home/ubuntu/SP25_DS5111_uwa6xv/collected_data/
     assert os.listdir('home/ubunutu/SP25_DS5111_uwa6xv/collected_data/')
     #adds time stamp to filename

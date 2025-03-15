@@ -1,13 +1,28 @@
+"""
+Module to call process for appropriate gainer.
+"""
 from abc import ABC, abstractmethod
-# PROCESSORS 
+# PROCESSORS
 class GainerProcess(ABC):
+    """
+    Class to call process for appropriate gainer.
+    """
     def __init__(self):
-        pass
+        """
+        Initializer method
+        """
+        #pass
 
     @abstractmethod
     def normalize(self):
-        pass
+        """
+        Method to call to normalize csv
+        """
+        #pass
 
     @abstractmethod
     def save_with_timestamp(self):
-        pass
+        """
+        Method to call to save raw csv with a timestamp in filename.
+        """
+       #pass

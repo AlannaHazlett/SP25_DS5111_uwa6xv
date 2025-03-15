@@ -1,10 +1,25 @@
+"""
+Module calls to the appropriate gainer script to download the gainers.
+"""
 from abc import ABC, abstractmethod
 
 # DOWNLOADER
-class GainerDownload(ABC, url):
+# pylint: disable=too-few-public-methods
+class GainerDownload(ABC):#, url):
+    """
+    This class calls to the appropriate gainer script to download the gainers.
+    """
+
     def __init__(self):
-        self.url = url
+        """
+        Initializer function
+        """
+        #self.url = url
+        #pass
 
     @abstractmethod
     def download(self):
-        pass
+        """
+        Creation of download function
+        """
+        #pass
