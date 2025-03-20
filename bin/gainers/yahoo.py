@@ -30,9 +30,10 @@ class GainerDownloadYahoo(GainerDownload):
                 > ygainers.html"""
         os.system(command)
         convert_command = """python -c 'import pandas as pd; \
-                          raw = pd.read_html('ygainers.html'); \
-                          raw[0].to_csv('ygainers.csv')'"""
+                          raw = pd.read_html("ygainers.html"); \
+                          raw[0].to_csv("ygainers.csv")'"""                
         os.system(convert_command)
+        print("Done with convert command")
 
 
 #Processor

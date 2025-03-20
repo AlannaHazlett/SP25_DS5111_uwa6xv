@@ -27,7 +27,7 @@ test: lint
 	pytest tests/*.py
 
 gainers:
-	. env/bin/activate; python SRC=$(file)#.py
+	. env/bin/activate; python main.py ${which}
 
 clean_ygainers:
 	rm ygainers.html || true 

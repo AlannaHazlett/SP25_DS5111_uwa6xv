@@ -15,6 +15,6 @@ class GainerProcess:
 
     def process(self):
         self._download()
-        #self._normalize()
-        #self._save_to_file()
+        self._normalize()
+        self._save_to_file()
 
