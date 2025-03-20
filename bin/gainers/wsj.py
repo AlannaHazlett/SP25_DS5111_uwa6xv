@@ -4,8 +4,8 @@ Module to download, process, and save with timestampe the WSJ gainers.
 import os
 from datetime import datetime
 import pandas as pd
-from download import GainerDownload
-from process import GainerProcess
+from bin.gainers.download import GainerDownload
+from bin.gainers.process import GainerProcess
 #Downloader
 # pylint: disable=too-few-public-methods
 class GainerDownloadWSJ(GainerDownload):
@@ -16,7 +16,7 @@ class GainerDownloadWSJ(GainerDownload):
         """
         Initializing method
         """
-        #super().__init__('https://www.wsj.com/market-data/stocks/us/movers')
+        super().__init__('https://www.wsj.com/market-data/stocks/us/movers')
 
     def download(self):
         """
@@ -40,6 +40,7 @@ class GainerProcessWSJ(GainerProcess):
         """
         Initalizing method
         """
+        super().__init__(choice='wsj')
         #pass
 
 

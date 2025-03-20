@@ -4,8 +4,8 @@ Module for downloading, normalizing, and saving timestamp for Yahoo gainers.
 import os
 from datetime import datetime
 import pandas as pd
-from download import GainerDownload
-from process import GainerProcess
+from bin.gainers.download import GainerDownload
+from bin.gainers.process import GainerProcess
 # Downloader
 # pylint: disable=too-few-public-methods
 class GainerDownloadYahoo(GainerDownload):
@@ -44,7 +44,8 @@ class GainerProcessYahoo(GainerProcess):
         """
         Initializing method
         """
-        #pass
+        #super().__init__(choice='yahoo')
+        pass
 
 
     def normalize(self):
@@ -53,7 +54,7 @@ class GainerProcessYahoo(GainerProcess):
         This is similar to previous use of normalize_csv.py
         """
         print("Normalizing yahoo gainers")
-        ygainers = pd.read_csv('sample_data/ygainers.csv')
+        ygainers = pd.read_csv('ygainers.csv')
         assert ygainers.shape[1] == 13
         print('ygainers has been read')
         ygainers = ygainers[['Symbol','Price','Change','Change %']]

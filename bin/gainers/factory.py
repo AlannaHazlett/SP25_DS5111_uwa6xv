@@ -2,8 +2,8 @@
 Factory Module to direct calls to gainers.
 """
 #from abc import ABC, abstractmethod
-from yahoo import GainerDownloadYahoo, GainerProcessYahoo
-from wsj import GainerDownloadWSJ, GainerProcessWSJ
+from bin.gainers.yahoo import GainerDownloadYahoo, GainerProcessYahoo
+from bin.gainers.wsj import GainerDownloadWSJ, GainerProcessWSJ
 #import wsj
 
 # FACTORY
