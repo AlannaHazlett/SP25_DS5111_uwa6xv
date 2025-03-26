@@ -16,7 +16,8 @@ class GainerDownloadWSJ(GainerDownload):
         """
         Initializing method
         """
-        super().__init__('https://www.wsj.com/market-data/stocks/us/movers')
+        #super().__init__('https://www.wsj.com/market-data/stocks/us/movers')
+        #pass
 
     def download(self):
         """
@@ -28,8 +29,8 @@ class GainerDownloadWSJ(GainerDownload):
                   'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html"""
         os.system(command)
         convert_command = """python -c 'import pandas as pd; \
-                           raw = pd.read_html('wsjgainers.html'); \
-                           raw[0].to_csv('wsjgainers.csv')'"""
+                           raw = pd.read_html("wsjgainers.html"); \
+                           raw[0].to_csv("wsjgainers.csv")'"""
         os.system(convert_command)
 #Processor
 class GainerProcessWSJ(GainerProcess):
@@ -40,7 +41,7 @@ class GainerProcessWSJ(GainerProcess):
         """
         Initalizing method
         """
-        super().__init__(choice='wsj')
+        #super().__init__(choice='wsj')
         #pass
 
 
@@ -50,7 +51,7 @@ class GainerProcessWSJ(GainerProcess):
         This is comparable to previous version normalize_csv.py.
         """
         print("Normalizing WSJ gainers")
-        wsjgainers = pd.read_csv('sample_data/wsjgainers.csv')
+        wsjgainers = pd.read_csv('wsjgainers.csv')
         assert wsjgainers.shape[1] == 6
         print('wsjgainers has been read')
         wsjgainers = wsjgainers[['Unnamed: 0', 'Last', 'Chg', '% Chg']]

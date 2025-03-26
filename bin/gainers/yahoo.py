@@ -31,7 +31,7 @@ class GainerDownloadYahoo(GainerDownload):
         os.system(command)
         convert_command = """python -c 'import pandas as pd; \
                           raw = pd.read_html("ygainers.html"); \
-                          raw[0].to_csv("ygainers.csv")'"""                
+                          raw[0].to_csv("ygainers.csv")'"""
         os.system(convert_command)
         print("Done with convert command")
 
@@ -46,7 +46,7 @@ class GainerProcessYahoo(GainerProcess):
         Initializing method
         """
         #super().__init__(choice='yahoo')
-        pass
+        #pass
 
 
     def normalize(self):
@@ -64,6 +64,8 @@ class GainerProcessYahoo(GainerProcess):
                                     'Change':'price_change',
                                     'Change %':'price_percent_change'}, axis=1)
         ygainers['price'] = ygainers.price.str.split(' ', expand=True)[0]
+        #Get rid of comma for thousands place, as it interferes with float conversion
+        ygainers['price'] = ygainers.price.str.replace(',', '')
         ygainers['price_percent_change'] = ygainers.price_percent_change.str[1:-1]
         ygainers = ygainers.astype({'symbol': 'str',
                                     'price': 'float',

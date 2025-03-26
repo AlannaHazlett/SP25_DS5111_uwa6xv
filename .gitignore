@@ -1,2 +1,6 @@
 env/
 google-chrome-stable_current_amd64.deb
+bin/__pycache__/
+tests/__pycache__/test_controls.cpython-312-pytest-8.3.4.pyc
+bin/gainers/__pycache_
+__pycache__/_

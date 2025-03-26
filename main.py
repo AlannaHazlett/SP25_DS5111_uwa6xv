@@ -1,4 +1,6 @@
-# Our sample main file would look like this
+"""
+Calls the other modules.
+"""
 import sys
 import bin.gainers.factory as gf
 #import main_process as pr
