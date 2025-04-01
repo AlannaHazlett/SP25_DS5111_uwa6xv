@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     Unique_Stocks ||--o| Raw_Table: "corresponds to"
     Unique_Stocks{
@@ -15,3 +16,4 @@ erDiagram
         string symbol
         float price
     }
+```
