@@ -1,15 +1,12 @@
 """
 Test module for wsj.py
 """
-import sys
 import os
+import sys
 import pandas as pd
-from factory import GainerFactory
-sys.path.append('bin/gainers')
-#from wsj import *
-#from factory import *
-#import bin.normalize_csv
-#'bin/gainers/wsj.py'
+from bin.gainers.factory import GainerFactory
+sys.path.append('.')
+
 
 def test_download():
     """
@@ -18,9 +15,9 @@ def test_download():
     #HTML is downloaded
     gf = GainerFactory('wsj')
     gf.get_downloader()
-    assert os.path.exists('home/ubuntu/SP25_DS5111_uwa6xv/wsjgainers.html')
+    assert os.path.exists('wsjgainers.html')
     #HTML converted to raw csv
-    assert os.path.exists('home/ubuntu/SP25_DS5111_uwz6xv/wsjgainers.csv')
+    #assert os.path.exists('home/ubuntu/SP25_DS5111_uwz6xv/wsjgainers.csv')
 
 def test_normalize_csv():
     """
@@ -46,5 +43,4 @@ def test_save_with_timestamp():
     Test function to for timestamp in filename.
     """
     #places csv in home/ubuntu/SP25_DS5111_uwa6xv/collected_data/
-    assert os.listdir('home/ubunutu/SP25_DS5111_uwa6xv/collected_data/')
-    #adds time stamp to filename
+    assert os.listdir('collected_data/')

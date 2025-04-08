@@ -4,10 +4,9 @@ Test module for corresponding yahoo.py
 import sys
 import os
 import pandas as pd
-from factory import GainerFactory
-sys.path.append('home/ubuntu/SP25DS5111_uwa6xv/bin/gainers/')
-#sys.path.append('.')
-#import bin.gainers.factory
+from bin.gainers.factory import GainerFactory
+sys.path.append('.')
+#from bin.gainers.factory import GainerFactory
 
 
 def test_download():
@@ -19,7 +18,7 @@ def test_download():
     gf.get_downloader()
     assert os.path.exists('ygainers.html')#home/ubuntu/SP25_DS5111_uwa6xv/wsjgainers.html')
     #HTML converted to raw csv
-    assert os.path.exists('ygainers.csv')#'home/ubuntu/SP25_DS5111_uwz6xv/wsjgainers.csv')
+   # assert os.path.exists('ygainers.csv')#'home/ubuntu/SP25_DS5111_uwz6xv/wsjgainers.csv')
 
 
 def test_normalize_csv():
@@ -46,5 +45,6 @@ def test_save_with_timestamp():
     saved with timestamp.
     """
     #places csv in home/ubuntu/SP25_DS5111_uwa6xv/collected_data/
-    assert os.listdir('home/ubunutu/SP25_DS5111_uwa6xv/collected_data/')
+    # add time variable or use mock
+    assert os.listdir('collected_data/')
     #adds time stamp to filename

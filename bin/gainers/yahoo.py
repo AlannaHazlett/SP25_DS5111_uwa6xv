@@ -5,7 +5,9 @@ import os
 from datetime import datetime
 import pandas as pd
 from bin.gainers.download import GainerDownload
+#from download import GainerDownload
 from bin.gainers.process import GainerProcess
+#from process import GainerProcess
 # Downloader
 # pylint: disable=too-few-public-methods
 class GainerDownloadYahoo(GainerDownload):
