@@ -4,8 +4,8 @@ Test module for wsj.py
 import os
 import sys
 import pandas as pd
-from bin.gainers.factory import GainerFactory
 sys.path.append('.')
+from bin.gainers.factory import GainerFactory
 
 
 def test_download():

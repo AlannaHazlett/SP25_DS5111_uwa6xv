@@ -4,10 +4,8 @@ Test module for corresponding yahoo.py
 import sys
 import os
 import pandas as pd
-from bin.gainers.factory import GainerFactory
 sys.path.append('.')
-#from bin.gainers.factory import GainerFactory
-
+from bin.gainers.factory import GainerFactory
 
 def test_download():
     """
