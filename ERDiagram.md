@@ -33,6 +33,7 @@ The normalized csvs were uploaded from the Ubuntu system via DBT-core and DBT-sn
 The Entity Relationship Diagram below helps us understand the structure of our database that is designed to gain better understanding of our stock data. Currently the data is only from the gainer lists from Wall Street Journal and Yahoo, but future analysis could include other stocks from the broader market. 
 
 ```mermaiderDiagram
+erDiagram    
     Unique_Stocks{
         string symbol
         int frequency
@@ -65,22 +66,5 @@ The Entity Relationship Diagram below helps us understand the structure of our d
         float price
         float price_change
         float price_percent_change
-    }
-erDiagram
-    Unique_Stocks ||--o| Raw_Table: "corresponds to"
-    Unique_Stocks{
-        string symbol
-        int frequency
-    }
-    Raw_Table{
-        string symbol
-        float price
-        float price_change
-        float price_percent_change
-    }
-    Unique_Stocks||--o{Price_Distribution: "corresponds to"
-    Price_Distribution{
-        string symbol
-        float price
     }
 ```
