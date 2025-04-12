@@ -19,22 +19,172 @@
 	* In the command line `pip install -r requirements.txt` 
 * To create and update the virtual environment use `make update` from the makefile. 
 * Utilize makefile to activate google headless browser to create a csv.
-	* If you have not entered your virtual environment you can quickly do this with `make update`.
-	* Then you call to create the csv, which depends upon the html call,  `make ygainers.csv`. You can see an example of this csv in my [sample_data](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/tree/main/sample_data) directory. 
+	* If you have not entered your virtual environment you can quickly do this with `make update` or with `source env/bin/acitvate`.
+	* Then you call to create the unnormalized csv, which depends upon the html call,  `make ygainers.csv` or `make wsjgainers.csv`. You can see an example csv in my [sample_data](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/tree/main/sample_data) directory. 
+    * To create the normalized csv with the timestamp saved in the file name call `make gainers which=yahoo` or `make gainers which=wsj`. This will save the files in the collected_data directory.
 * Lint all files in bin/ and tests/ with `make lint`.
 * Test all files in tests/ with `make test`. This will also call `make lint` as a requirement. 
 * Remove HTML or unnormalized CSV files with either `make clean ygainers` or `make clean wsjgainers`. 
 * The current structure of the repository is:
 
 ```
+/home/ubuntu/SP25_DS5111_uwa6xv
+├── ERDiagram.md
 ├── LICENSE
+├── PracticeMermaid.md
 ├── README.md
+├── __pycache__
+│   └── main_process.cpython-312.pyc
 ├── bin
 │   ├── __pycache__
 │   │   └── normalize_csv.cpython-312.pyc
+│   ├── gainers
+│   │   ├── __pycache__
+│   │   │   ├── download.cpython-312.pyc
+│   │   │   ├── factory.cpython-312.pyc
+│   │   │   ├── process.cpython-312.pyc
+│   │   │   ├── wsj.cpython-312.pyc
+│   │   │   └── yahoo.cpython-312.pyc
+│   │   ├── download.py
+│   │   ├── factory.py
+│   │   ├── process.py
+│   │   ├── wsj.py
+│   │   └── yahoo.py
 │   └── normalize_csv.py
+├── collected_data
+│   ├── norm_wsjgainers2025-03-10_13:31:09.csv
+│   ├── norm_wsjgainers2025-03-10_16:29:09.csv
+│   ├── norm_wsjgainers2025-03-10_20:01:17.csv
+│   ├── norm_wsjgainers2025-03-11_13:51:12.csv
+│   ├── norm_wsjgainers2025-03-11_16:30:18.csv
+│   ├── norm_wsjgainers2025-03-11_20:01:18.csv
+│   ├── norm_wsjgainers2025-03-12_13:31:19.csv
+│   ├── norm_wsjgainers2025-03-12_16:30:20.csv
+│   ├── norm_wsjgainers2025-03-12_20:01:18.csv
+│   ├── norm_wsjgainers2025-03-13_13:31:17.csv
+│   ├── norm_wsjgainers2025-03-13_16:30:18.csv
+│   ├── norm_wsjgainers2025-03-13_20:01:35.csv
+│   ├── norm_wsjgainers2025-03-14_13:31:18.csv
+│   ├── norm_wsjgainers2025-03-14_16:30:18.csv
+│   ├── norm_wsjgainers2025-03-14_20:01:18.csv
+│   ├── norm_ygainers2025-03-10_13:33:12.csv
+│   ├── norm_ygainers2025-03-10_16:28:12.csv
+│   ├── norm_ygainers2025-03-10_20:01:10.csv
+│   ├── norm_ygainers2025-03-11_13:31:34.csv
+│   ├── norm_ygainers2025-03-11_16:30:09.csv
+│   ├── norm_ygainers2025-03-11_20:01:10.csv
+│   ├── norm_ygainers2025-03-12_13:31:11.csv
+│   ├── norm_ygainers2025-03-12_16:30:11.csv
+│   ├── norm_ygainers2025-03-12_20:01:10.csv
+│   ├── norm_ygainers2025-03-13_13:31:09.csv
+│   ├── norm_ygainers2025-03-13_16:30:09.csv
+│   ├── norm_ygainers2025-03-13_20:01:10.csv
+│   ├── norm_ygainers2025-03-14_13:31:10.csv
+│   ├── norm_ygainers2025-03-14_16:30:09.csv
+│   ├── norm_ygainers2025-03-14_20:01:09.csv
+│   ├── wsjgainers2025-03-10_13:31:09.csv
+│   ├── wsjgainers2025-03-10_16:29:09.csv
+│   ├── wsjgainers2025-03-10_20:01:17.csv
+│   ├── wsjgainers2025-03-11_13:51:12.csv
+│   ├── wsjgainers2025-03-11_16:30:18.csv
+│   ├── wsjgainers2025-03-11_20:01:18.csv
+│   ├── wsjgainers2025-03-12_13:31:19.csv
+│   ├── wsjgainers2025-03-12_16:30:20.csv
+│   ├── wsjgainers2025-03-12_20:01:18.csv
+│   ├── wsjgainers2025-03-13_13:31:17.csv
+│   ├── wsjgainers2025-03-13_16:30:18.csv
+│   ├── wsjgainers2025-03-13_20:01:35.csv
+│   ├── wsjgainers2025-03-14_13:31:18.csv
+│   ├── wsjgainers2025-03-14_16:30:18.csv
+│   ├── wsjgainers2025-03-14_20:01:18.csv
+│   ├── ygainers2025-03-10_13:33:12.csv
+│   ├── ygainers2025-03-10_16:28:12.csv
+│   ├── ygainers2025-03-10_20:01:10.csv
+│   ├── ygainers2025-03-11_13:31:34.csv
+│   ├── ygainers2025-03-11_16:30:09.csv
+│   ├── ygainers2025-03-11_20:01:10.csv
+│   ├── ygainers2025-03-12_13:31:11.csv
+│   ├── ygainers2025-03-12_16:30:11.csv
+│   ├── ygainers2025-03-12_20:01:10.csv
+│   ├── ygainers2025-03-13_13:31:09.csv
+│   ├── ygainers2025-03-13_16:30:09.csv
+│   ├── ygainers2025-03-13_20:01:10.csv
+│   ├── ygainers2025-03-14_13:31:10.csv
+│   ├── ygainers2025-03-14_16:30:09.csv
+│   └── ygainers2025-03-14_20:01:09.csv
+├── crontab.sh
+├── debug.txt
+├── get_gainer.py
 ├── google-chrome-stable_current_amd64.deb
+├── main.py
 ├── makefile
+├── projects
+│   ├── gainers
+│   │   ├── README.md
+│   │   ├── analyses
+│   │   ├── dbt_project.yml
+│   │   ├── logs
+│   │   │   └── dbt.log
+│   │   ├── macros
+│   │   ├── models
+│   │   │   └── example
+│   │   │       ├── ende.sql
+│   │   │       ├── enfr.sql
+│   │   │       ├── french.sql
+│   │   │       ├── my_first_dbt_model.sql
+│   │   │       ├── my_second_dbt_model.sql
+│   │   │       └── schema.yml
+│   │   ├── seeds
+│   │   │   └── numbers.csv
+│   │   ├── snapshots
+│   │   ├── target
+│   │   │   ├── compiled
+│   │   │   │   └── gainers
+│   │   │   │       └── models
+│   │   │   │           └── example
+│   │   │   │               ├── ende.sql
+│   │   │   │               ├── enfr.sql
+│   │   │   │               ├── french.sql
+│   │   │   │               ├── my_first_dbt_model.sql
+│   │   │   │               ├── my_second_dbt_model.sql
+│   │   │   │               └── schema.yml
+│   │   │   │                   ├── accepted_values_french_FR__un__deux__troi.sql
+│   │   │   │                   ├── not_null_french_FR.sql
+│   │   │   │                   ├── not_null_my_first_dbt_model_id.sql
+│   │   │   │                   ├── not_null_my_second_dbt_model_id.sql
+│   │   │   │                   ├── relationships_enfr_EN__EN__ref_ende_.sql
+│   │   │   │                   ├── unique_french_FR.sql
+│   │   │   │                   ├── unique_my_first_dbt_model_id.sql
+│   │   │   │                   └── unique_my_second_dbt_model_id.sql
+│   │   │   ├── graph.gpickle
+│   │   │   ├── graph_summary.json
+│   │   │   ├── manifest.json
+│   │   │   ├── partial_parse.msgpack
+│   │   │   ├── run
+│   │   │   │   └── gainers
+│   │   │   │       ├── models
+│   │   │   │       │   └── example
+│   │   │   │       │       ├── ende.sql
+│   │   │   │       │       ├── enfr.sql
+│   │   │   │       │       ├── french.sql
+│   │   │   │       │       ├── my_first_dbt_model.sql
+│   │   │   │       │       ├── my_second_dbt_model.sql
+│   │   │   │       │       └── schema.yml
+│   │   │   │       │           ├── accepted_values_french_FR__un__deux__troi.sql
+│   │   │   │       │           ├── not_null_french_FR.sql
+│   │   │   │       │           ├── not_null_my_first_dbt_model_id.sql
+│   │   │   │       │           ├── not_null_my_second_dbt_model_id.sql
+│   │   │   │       │           ├── relationships_enfr_EN__EN__ref_ende_.sql
+│   │   │   │       │           ├── unique_french_FR.sql
+│   │   │   │       │           ├── unique_my_first_dbt_model_id.sql
+│   │   │   │       │           └── unique_my_second_dbt_model_id.sql
+│   │   │   │       └── seeds
+│   │   │   │           └── numbers.csv
+│   │   │   ├── run_results.json
+│   │   │   └── semantic_manifest.json
+│   │   └── tests
+│   └── logs
+│       └── dbt.log
 ├── pylintrc
 ├── requirements.txt
 ├── sample_data
@@ -48,16 +198,21 @@
 ├── tests
 │   ├── __pycache__
 │   │   ├── test_controls.cpython-312-pytest-8.3.4.pyc
+│   │   ├── test_wsj.cpython-312-pytest-8.3.4.pyc
 │   │   ├── test_wsjgainers_normalize_csv.cpython-312-pytest-8.3.4.pyc
+│   │   ├── test_yahoo.cpython-312-pytest-8.3.4.pyc
 │   │   └── test_ygainers_normalize_csv.cpython-312-pytest-8.3.4.pyc
 │   ├── test_controls.py
+│   ├── test_wsj.py
 │   ├── test_wsjgainers_normalize_csv.py
+│   ├── test_yahoo.py
 │   └── test_ygainers_normalize_csv.py
 ├── wsjgainers.html
+├── wsjgainers_crontab_csv.py
 ├── wsjgainers_norm.csv
 ├── ygainers.html
-└── ygainers_norm.csv)
+├── ygainers_crontab_csv.py
+└── ygainers_norm.csv
 ```
 
-### Badges
-[![Feature Validation](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml/badge.svg?branch=LAB-03_csv_normalizer&event=push)](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml)
+### Badges[![Feature Validation](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml/badge.svg?branch=LAB-03_csv_normalizer&event=push)](https://github.com/AlannaHazlett/SP25_DS5111_uwa6xv/actions/workflows/validations.yml)

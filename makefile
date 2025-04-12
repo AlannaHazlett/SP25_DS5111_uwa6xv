@@ -11,23 +11,28 @@ ygainers.html:
 	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html
 
 ygainers.csv: ygainers.html
-	python -c "import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')"
+	. env/bin/activate; python -c "import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')"
 
 wsjgainers.html:
 	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html
 
 wsjgainers.csv: wsjgainers.html
-	python -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
+	. env/bin/activate; python -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
 
 lint: 
-	pylint bin/          #$(file)
-	pylint tests/ || true	
+	. env/bin/activate; pylint bin/ || true          #$(file)
+	. env/bin/activate; pylint tests/ || true	
 
 test: lint
 	pytest tests/*.py
 
-clean ygainers:
-	rm ygainers.html ygainers.csv 
+gainers:
+	. env/bin/activate; python main.py ${which}
 
-clean wsjgainers: 
-	rm wsjgainers.html wsjgainers.csv
+clean_ygainers:
+	rm ygainers.html || true 
+	rm ygainers.csv || true 
+
+clean_wsjgainers: 
+	rm wsjgainers.html || true 
+	rm wsjgainers.csv || true
