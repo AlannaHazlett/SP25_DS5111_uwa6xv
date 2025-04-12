@@ -32,7 +32,7 @@ The normalized csvs were uploaded from the Ubuntu system via DBT-core and DBT-sn
 
 The Entity Relationship Diagram below helps us understand the structure of our database that is designed to gain better understanding of our stock data. Currently the data is only from the gainer lists from Wall Street Journal and Yahoo, but future analysis could include other stocks from the broader market. 
 
-```mermaiderDiagram
+```mermaid
 erDiagram    
     Unique_Stocks{
         string symbol
